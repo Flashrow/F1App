@@ -1,4 +1,5 @@
 import 'package:f1app/screens/resultsScreen/racePicker.dart';
+import 'package:f1app/screens/resultsScreen/resultsTab.dart';
 import 'package:flutter/material.dart';
 
 class ResultsScreen extends StatelessWidget {
@@ -12,6 +13,10 @@ class ResultsScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
             child: RacePicker(),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
+            child: ResultsTab(),
           ),
         ],
       ),
