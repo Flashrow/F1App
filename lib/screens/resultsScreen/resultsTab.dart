@@ -15,10 +15,18 @@ class _ResultsTabState extends State<ResultsTab> {
     return ResultsTile(
         label: resultLabel(),
         child: SizedBox(
-            height: 300,
+            height: 500,
             width: double.infinity,
             child: ListView(
               children: [
+                ResultRow(),
+                ResultRow(),
+                ResultRow(),
+                ResultRow(),
+                ResultRow(),
+                ResultRow(),
+                ResultRow(),
+                ResultRow(),
                 ResultRow(),
               ],
             )));
@@ -27,23 +35,23 @@ class _ResultsTabState extends State<ResultsTab> {
   Widget resultLabel() {
     return Row(
       children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 16, 0),
+        SizedBox(
+          width: 38,
           child: Text("Pos",
               style: TextStyle(color: Theme.of(context).backgroundColor)),
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 150, 0),
+        SizedBox(
+          width: 165,
           child: Text("Driver",
               style: TextStyle(color: Theme.of(context).backgroundColor)),
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 50, 0),
+        SizedBox(
+          width: 115,
           child: Text("Time",
               style: TextStyle(color: Theme.of(context).backgroundColor)),
         ),
-        Text("Points",
-            style: TextStyle(color: Theme.of(context).backgroundColor)),
+        Text("Pts",
+              style: TextStyle(color: Theme.of(context).backgroundColor)),
       ],
     );
   }
