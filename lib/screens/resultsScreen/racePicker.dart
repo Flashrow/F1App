@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RacePicker extends StatefulWidget {
-  RacePicker({Key key}) : super(key: key);
+  RacePicker({Key? key}) : super(key: key);
 
   @override
   _RacePickerState createState() => _RacePickerState();

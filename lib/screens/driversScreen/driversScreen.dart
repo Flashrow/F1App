@@ -1,15 +1,21 @@
 import 'package:f1app/components/roundedTopCornersTile.dart';
+import 'package:f1app/screens/driverInfoScreen/driverInfoScreen.dart';
 import 'package:f1app/screens/driversScreen/driversListRow.dart';
 import 'package:flutter/material.dart';
 
 class DriversScreen extends StatefulWidget {
-  DriversScreen({Key key}) : super(key: key);
+  const DriversScreen({Key? key}) : super(key: key);
 
   @override
   _DriversScreenState createState() => _DriversScreenState();
 }
 
 class _DriversScreenState extends State<DriversScreen> {
+  void openDriverInfoScreen() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => DriverInfoScreen()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,7 +25,7 @@ class _DriversScreenState extends State<DriversScreen> {
         child: Expanded(
           child: ListView(
             children: [
-              DriversListRow(),
+              DriversListRow(onTap: openDriverInfoScreen,),
               DriversListRow(),
               DriversListRow(),
               DriversListRow(),

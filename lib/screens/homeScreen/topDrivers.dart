@@ -3,7 +3,7 @@ import 'package:f1app/screens/homeScreen/homeResultRow.dart';
 import 'package:flutter/material.dart';
 
 class TopDriversTile extends StatefulWidget {
-  TopDriversTile({Key key}) : super(key: key);
+  TopDriversTile({Key? key}) : super(key: key);
 
   @override
   _TopDriversTileState createState() => _TopDriversTileState();

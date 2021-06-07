@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: colorTheme.themeData,
       home: MainPattern(
-        body: DriverInfoScreen(),
+        body: HomeScreen(),
       ),
     );
   }

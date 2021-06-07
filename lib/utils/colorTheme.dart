@@ -5,7 +5,7 @@ class ColorTheme {
 
   ThemeData get themeData {
     TextTheme txtTheme = ThemeData.light().textTheme;
-    Color txtColor = txtTheme.bodyText1.color;
+    Color txtColor = txtTheme.bodyText1!.color!;
     ColorScheme colorScheme = ColorScheme(
         brightness: Brightness.light,
         primary: Color.fromRGBO(166, 3, 17, 1),

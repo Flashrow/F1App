@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class RoundedTopCornersTile extends StatelessWidget {
-  const RoundedTopCornersTile({Key key, this.title = "Title", this.child})
+  const RoundedTopCornersTile({Key? key, this.title = "Title", this.child})
       : super(key: key);
 
   final String title;
-  final Widget child;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,7 @@ class RoundedTopCornersTile extends StatelessWidget {
                 ),
               ),
             ),
-            this.child,
+            this.child!,
           ],
         ),
       ),

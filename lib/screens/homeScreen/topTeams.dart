@@ -2,7 +2,7 @@ import 'package:f1app/components/roundedTopCornersTile.dart';
 import 'package:flutter/material.dart';
 
 class TopTeamsTile extends StatefulWidget {
-  TopTeamsTile({Key key}) : super(key: key);
+  TopTeamsTile({Key? key}) : super(key: key);
 
   @override
   _TopTeamsTileState createState() => _TopTeamsTileState();

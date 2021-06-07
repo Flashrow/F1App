@@ -3,7 +3,7 @@ import 'package:f1app/screens/resultsScreen/resultsTile.dart';
 import 'package:flutter/material.dart';
 
 class ResultsTab extends StatefulWidget {
-  ResultsTab({Key key}) : super(key: key);
+  ResultsTab({Key? key}) : super(key: key);
 
   @override
   _ResultsTabState createState() => _ResultsTabState();

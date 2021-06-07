@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ResultsTile extends StatelessWidget {
-  const ResultsTile({Key key, this.child, this.label}) : super(key: key);
+  const ResultsTile({Key? key, this.child, this.label}) : super(key: key);
 
-  final Widget child;
-  final Widget label;
+  final Widget? child;
+  final Widget? label;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class ResultsTile extends StatelessWidget {
                 child: this.label,
               ),
             ),
-            this.child,
+            this.child!,
           ],
         ),
       ),

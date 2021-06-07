@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class DriversListRow extends StatelessWidget {
-  const DriversListRow({Key key}) : super(key: key);
+  const DriversListRow({Key? key, this.onTap}) : super(key: key);
+
+  final Function? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +12,7 @@ class DriversListRow extends StatelessWidget {
       child: Material(
         elevation: 2.0,
         child: InkWell(
-          onTap: () => {},
+          onTap: onTap as void Function()?,
           child: Ink(
             decoration: BoxDecoration(
               color: Theme.of(context).backgroundColor,

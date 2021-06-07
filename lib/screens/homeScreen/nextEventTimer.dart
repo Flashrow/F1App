@@ -2,7 +2,7 @@ import 'package:f1app/components/roundedTopCornersTile.dart';
 import 'package:flutter/material.dart';
 
 class NextEventTimer extends StatefulWidget {
-  NextEventTimer({Key key}) : super(key: key);
+  NextEventTimer({Key? key}) : super(key: key);
 
   @override
   _NextEventTimerState createState() => _NextEventTimerState();

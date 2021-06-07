@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class HomeResultRow extends StatelessWidget {
   const HomeResultRow(
-      {Key key,
+      {Key? key,
       this.icon = Icons.flag,
       this.name = "Name",
       this.origin = "Origin",
