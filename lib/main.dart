@@ -1,4 +1,5 @@
 import 'package:f1app/components/mainPattern/mainPattern.dart';
+import 'package:f1app/screens/driverInfoScreen/driverInfoScreen.dart';
 import 'package:f1app/screens/driversScreen/driversScreen.dart';
 import 'package:f1app/screens/homeScreen/homeScreen.dart';
 import 'package:f1app/screens/resultsScreen/resultsScreen.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: colorTheme.themeData,
       home: MainPattern(
-        body: DriversScreen(),
+        body: DriverInfoScreen(),
       ),
     );
   }
