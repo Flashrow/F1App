@@ -1,4 +1,4 @@
-import 'package:f1app/models/TopTeamsChart/StandingList.dart';
+import 'package:f1app/models/DataHolders/StandingsTable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'MRData.g.dart';
@@ -10,9 +10,9 @@ class MRData{
     this.total,
   });
 
-  int? total;
-  @JsonKey(name: "StandingsList")
-  StandingList? standingsList;
+  String? total;
+  @JsonKey(name: "StandingsTable")
+  StandingsTable? standingsTable;
 
   factory MRData.fromJson(Map<String, dynamic> json) => _$MRDataFromJson(json);
   Map<String, dynamic> toJson() => _$MRDataToJson(this);

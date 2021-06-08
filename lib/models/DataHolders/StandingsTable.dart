@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:f1app/models/TopTeamsChart/StandingList.dart';
+import 'package:f1app/models/DataHolders/StandingList.dart';
 
 part 'StandingsTable.g.dart';
 
@@ -7,11 +7,12 @@ part 'StandingsTable.g.dart';
 class StandingsTable {
   StandingsTable({
     this.season,
-    this.standingList,
+    this.standingsList,
   });
 
-  int? season;
-  List<StandingList>? standingList;
+  String? season;
+  @JsonKey(name: 'StandingsLists')
+  List<StandingList>? standingsList;
 
   factory StandingsTable.fromJson(Map<String, dynamic> json) =>
       _$StandingsTableFromJson(json);

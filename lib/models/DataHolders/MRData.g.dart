@@ -8,13 +8,13 @@ part of 'MRData.dart';
 
 MRData _$MRDataFromJson(Map<String, dynamic> json) {
   return MRData(
-    total: json['total'] as int?,
-  )..standingsList = json['StandingsList'] == null
+    total: json['total'] as String?,
+  )..standingsTable = json['StandingsTable'] == null
       ? null
-      : StandingList.fromJson(json['StandingsList'] as Map<String, dynamic>);
+      : StandingsTable.fromJson(json['StandingsTable'] as Map<String, dynamic>);
 }
 
 Map<String, dynamic> _$MRDataToJson(MRData instance) => <String, dynamic>{
       'total': instance.total,
-      'StandingsList': instance.standingsList,
+      'StandingsTable': instance.standingsTable,
     };

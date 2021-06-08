@@ -1,4 +1,4 @@
-import 'package:f1app/models/TopTeamsChart/Constructor.dart';
+import 'package:f1app/models/Constructors/Constructor.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'ConstructorStanding.g.dart';
@@ -10,9 +10,9 @@ class ConstructorStanding {
     this.points,
     this.wins,
   });
-  int? position;
-  int? points;
-  int? wins;
+  String? position;
+  String? points;
+  String? wins;
 
   @JsonKey(name: "Constructor")
   Constructor? constructor;

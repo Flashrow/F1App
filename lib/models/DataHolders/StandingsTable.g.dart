@@ -8,8 +8,8 @@ part of 'StandingsTable.dart';
 
 StandingsTable _$StandingsTableFromJson(Map<String, dynamic> json) {
   return StandingsTable(
-    season: json['season'] as int?,
-    standingList: (json['standingList'] as List<dynamic>?)
+    season: json['season'] as String?,
+    standingsList: (json['StandingsLists'] as List<dynamic>?)
         ?.map((e) => StandingList.fromJson(e as Map<String, dynamic>))
         .toList(),
   );
@@ -18,5 +18,5 @@ StandingsTable _$StandingsTableFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$StandingsTableToJson(StandingsTable instance) =>
     <String, dynamic>{
       'season': instance.season,
-      'standingList': instance.standingList,
+      'StandingsLists': instance.standingsList,
     };
