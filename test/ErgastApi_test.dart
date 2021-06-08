@@ -1,20 +1,21 @@
 import 'package:dio/dio.dart';
+import 'package:f1app/API/ErgastApi.dart';
 import 'package:f1app/models/DataHolders/Ergast.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-main(){
-  test('Drivers standings serialization test', () async{
-    Ergast ergast = new Ergast();
+main() {
+  test('Main api test', () async {
+    ErgastApi ergastApi = ErgastApi();
 
-    var url = Uri.parse('http://ergast.com/api/f1/2021/driverStandings.json');
-    var response = await http.get(url);
+    print(await ergastApi.getTopThreeDrivers());
 
-    print('Response body: ${response.body}');
+    String teamName = (await ergastApi.getTopThreeDrivers()).first.team!;
 
-    ergast = Ergast.fromJson(jsonDecode(response.body));
 
-    expect(ergast.mrData!.standingsTable!.standingsList![0].driverStandings![0].driver!.familyName, "Verstappen");
+    print((await ergastApi.getTopThreeDrivers()).toString());
+
+    expect(teamName, "Red Bull");
   });
 }
