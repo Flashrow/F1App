@@ -10,12 +10,12 @@ class ConstructorStanding {
     this.points,
     this.wins,
   });
-  String? position;
-  String? points;
-  String? wins;
+  String? position = "";
+  String? points = "";
+  String? wins = "";
 
   @JsonKey(name: "Constructor")
-  Constructor? constructor;
+  Constructor? constructor = Constructor();
 
     factory ConstructorStanding.fromJson(Map<String, dynamic> json) =>
       _$ConstructorStandingFromJson(json);

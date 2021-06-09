@@ -14,6 +14,8 @@ MRData _$MRDataFromJson(Map<String, dynamic> json) {
         ? null
         : StandingsTable.fromJson(
             json['StandingsTable'] as Map<String, dynamic>)
+    ..driverTable =
+        DriverTable.fromJson(json['DriverTable'] as Map<String, dynamic>)
     ..raceTable = json['RaceTable'] == null
         ? null
         : RaceTable.fromJson(json['RaceTable'] as Map<String, dynamic>);
@@ -22,5 +24,6 @@ MRData _$MRDataFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$MRDataToJson(MRData instance) => <String, dynamic>{
       'total': instance.total,
       'StandingsTable': instance.standingsTable,
+      'DriverTable': instance.driverTable,
       'RaceTable': instance.raceTable,
     };

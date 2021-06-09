@@ -17,7 +17,9 @@ Race _$RaceFromJson(Map<String, dynamic> json) {
     date: json['date'] as String?,
     raceName: json['raceName'] as String?,
     time: json['time'] as String?,
-  );
+  )..results = (json['Results'] as List<dynamic>)
+      .map((e) => Result.fromJson(e as Map<String, dynamic>))
+      .toList();
 }
 
 Map<String, dynamic> _$RaceToJson(Race instance) => <String, dynamic>{
@@ -28,4 +30,5 @@ Map<String, dynamic> _$RaceToJson(Race instance) => <String, dynamic>{
       'date': instance.date,
       'time': instance.time,
       'Circuit': instance.circuit,
+      'Results': instance.results,
     };

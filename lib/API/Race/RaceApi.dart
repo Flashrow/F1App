@@ -6,13 +6,14 @@ import 'package:retrofit/retrofit.dart';
 
 part 'RaceApi.g.dart';
 
-@RestApi(baseUrl: 'http://ergast.com/api/f1/current')
+@RestApi(baseUrl: 'http://ergast.com/api/f1')
 abstract class RaceApi{
   factory RaceApi(Dio dio, {String baseUrl}) = _RaceApi;
 
-  @POST('/next.json')
+  @POST('/current/next.json')
   Future<Ergast> getNextRace();
 
-  @POST('.json')
+  @POST('/current.json')
   Future<Ergast> getCurrentRaces();
+
 }

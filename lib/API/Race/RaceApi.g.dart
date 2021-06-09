@@ -8,7 +8,7 @@ part of 'RaceApi.dart';
 
 class _RaceApi implements RaceApi {
   _RaceApi(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'http://ergast.com/api/f1/current';
+    baseUrl ??= 'http://ergast.com/api/f1';
   }
 
   final Dio _dio;
@@ -23,7 +23,7 @@ class _RaceApi implements RaceApi {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Ergast>(
             Options(method: 'POST', headers: <String, dynamic>{}, extra: _extra)
-                .compose(_dio.options, '/next.json',
+                .compose(_dio.options, '/current/next.json',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = Ergast.fromJson(_result.data!);
@@ -38,7 +38,7 @@ class _RaceApi implements RaceApi {
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<Ergast>(
             Options(method: 'POST', headers: <String, dynamic>{}, extra: _extra)
-                .compose(_dio.options, '.json',
+                .compose(_dio.options, '/current.json',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = Ergast.fromJson(_result.data!);

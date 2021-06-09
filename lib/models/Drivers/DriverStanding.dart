@@ -12,15 +12,15 @@ class DriverStanding {
     this.wins,
     this.constructor,
   });
-  String? position;
-  String? points;
-  String? wins;
+  String? position = "";
+  String? points = "";
+  String? wins = "";
 
   @JsonKey(name: "Driver")
-  Driver? driver;
+  Driver? driver = Driver();
 
   @JsonKey(name: 'Constructors')
-  List<Constructor>? constructor;
+  List<Constructor>? constructor = [];
 
   factory DriverStanding.fromJson(Map<String, dynamic> json) =>
       _$DriverStandingFromJson(json);

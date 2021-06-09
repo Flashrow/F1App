@@ -10,14 +10,14 @@ class StandingList {
     this.season,
     this.round,
   });
-  String? season;
-  String? round;
+  String? season = "";
+  String? round = "";
   
   @JsonKey(name: 'ConstructorStandings')
-  List<ConstructorStanding>? constructorStandings;
+  List<ConstructorStanding>? constructorStandings = [];
 
   @JsonKey(name: 'DriverStandings')
-  List<DriverStanding>? driverStandings;
+  List<DriverStanding>? driverStandings = [];
   
   factory StandingList.fromJson(Map<String, dynamic> json) =>
       _$StandingListFromJson(json);

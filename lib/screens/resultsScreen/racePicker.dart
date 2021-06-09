@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_material_pickers/helpers/show_scroll_picker.dart';
 
 class RacePicker extends StatefulWidget {
   RacePicker({Key? key}) : super(key: key);
@@ -8,13 +9,29 @@ class RacePicker extends StatefulWidget {
 }
 
 class _RacePickerState extends State<RacePicker> {
+  var selectedType = "Drivers";
+  var selectedYear = "2021";
+
+  late List<String> yearsList;
+
+  List<String> scheduleType = <String>[
+    'Drivers',
+    'Constructors',
+  ];
+
+  @override
+  initState() {
+    super.initState();
+    yearsList = getYearsList();
+    print(yearsList);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         InkWell(
-          onTap: () => {},
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
             bottomLeft: Radius.circular(20),
@@ -36,7 +53,7 @@ class _RacePickerState extends State<RacePicker> {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),
                 child: Text(
-                  "Drivers",
+                  selectedType,
                   textAlign: TextAlign.center,
                   style: TextStyle(color: Theme.of(context).backgroundColor),
                 ),
@@ -46,7 +63,16 @@ class _RacePickerState extends State<RacePicker> {
         ),
         SizedBox(width: 2),
         InkWell(
-          onTap: () => {},
+          onTap: () => {
+            print("Showing material picker"),
+            showMaterialScrollPicker(
+              context: context,
+              title: "Pick drivers or constructors",
+              items: yearsList,
+              selectedValue: selectedYear,
+              onChanged: (value) => setState(() => selectedYear = value),
+            )
+          },
           child: Ink(
             decoration: BoxDecoration(
               color: Theme.of(context).primaryColor,
@@ -64,7 +90,7 @@ class _RacePickerState extends State<RacePicker> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      "2021",
+                      selectedYear,
                       style:
                           TextStyle(color: Theme.of(context).backgroundColor),
                     ),
@@ -127,5 +153,13 @@ class _RacePickerState extends State<RacePicker> {
         ),
       ],
     );
+  }
+
+  List<String> getYearsList() {
+    List<String> list = [];
+    for (int year = DateTime.now().year; year >= 1950; year--) {
+      list.add(year.toString());
+    }
+    return list;
   }
 }

@@ -1,6 +1,8 @@
 import 'package:f1app/models/Race/Circuit.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import 'Result.dart';
+
 part 'Race.g.dart';
 
 @JsonSerializable()
@@ -24,6 +26,9 @@ class Race {
 
   @JsonKey(name: 'Circuit')
   Circuit? circuit = Circuit();
+
+  @JsonKey(name: 'Results')
+  List<Result> results = [];
 
   factory Race.fromJson(Map<String, dynamic> json) => _$RaceFromJson(json);
   Map<String, dynamic> toJson() => _$RaceToJson(this);

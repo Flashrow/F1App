@@ -11,10 +11,10 @@ class Constructor {
     this.nationality,
   });
 
-  String? constructorId;
-  String? url;
-  String? name;
-  String? nationality;
+  String? constructorId = "";
+  String? url = "";
+  String? name = "";
+  String? nationality ="";
 
   factory Constructor.fromJson(Map<String, dynamic> json) =>
       _$ConstructorFromJson(json);

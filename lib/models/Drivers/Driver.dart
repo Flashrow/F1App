@@ -14,12 +14,12 @@ class Driver {
     this.dateOfBirth,
   });
 
-  String? driverId;
-  String? url;
-  String? givenName;
-  String? familyName;
-  String? dateOfBirth;
-  String? nationality;
+  String? driverId = "";
+  String? url = "";
+  String? givenName = "";
+  String? familyName = "";
+  String? dateOfBirth = "";
+  String? nationality = "";
 
   factory Driver.fromJson(Map<String, dynamic> json) =>
       _$DriverFromJson(json);
