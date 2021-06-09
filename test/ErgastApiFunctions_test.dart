@@ -6,16 +6,27 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 main() {
-  test('Main api test', () async {
+  test('Main api getTopThreeDrivers test', () async {
     ErgastApi ergastApi = ErgastApi();
 
     print(await ergastApi.getTopThreeDrivers());
 
     String teamName = (await ergastApi.getTopThreeDrivers()).first.team!;
 
-
     print((await ergastApi.getTopThreeDrivers()).toString());
 
     expect(teamName, "Red Bull");
+  });
+
+  test('Main api getTopThreeConstructors test', () async {
+    ErgastApi ergastApi = ErgastApi();
+
+    print("getTopThreeConstructors: " + (await ergastApi.getTopThreeConstructors()).toString());
+
+    String teamNationality = (await ergastApi.getTopThreeConstructors()).first.nationality!;
+
+    print((await ergastApi.getTopThreeDrivers()).toString());
+
+    expect(teamNationality, "Austrian");
   });
 }

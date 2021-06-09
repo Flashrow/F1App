@@ -43,7 +43,9 @@ class _TopDriversTileState extends State<TopDriversTile> {
       child: FutureBuilder(
         future: _getDriverStandings(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-          List<DriverStandingData> driverStanding = snapshot.data;
+          List<DriverStandingData> driverStanding = List<DriverStandingData>.filled(3, DriverStandingData());
+          if(snapshot.data != null)
+            driverStanding = snapshot.data;          
 
           return Padding(
             padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),

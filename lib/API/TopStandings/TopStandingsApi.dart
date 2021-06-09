@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:f1app/models/DataHolders/Ergast.dart';
-import 'package:flutter/material.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'TopStandingsApi.g.dart';
