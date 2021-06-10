@@ -16,17 +16,17 @@ class ResultRow extends StatelessWidget {
         children: [
           SizedBox(
             width: 38,
-            child: Text(pos!),
+            child: Text(pos ?? ""),
           ),
           SizedBox(
             width: 165,
-            child: Text(name!),
+            child: Text(name ?? ""),
           ),
           SizedBox(
             width: 115,
-            child: Text(time!),
+            child: Text(time ?? ""),
           ),
-          Text(pts!),
+          Text(pts ?? ""),
         ],
       ),
     );

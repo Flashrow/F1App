@@ -1,4 +1,3 @@
-import 'package:f1app/models/Constructors/Constructor.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'Driver.g.dart';

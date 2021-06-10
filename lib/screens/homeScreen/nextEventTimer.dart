@@ -5,7 +5,6 @@ import 'package:f1app/components/roundedTopCornersTile.dart';
 import 'package:f1app/models/HomeSceenTimer.dart';
 import 'package:f1app/models/Race/Race.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 
 class NextEventTimer extends StatefulWidget {
@@ -132,11 +131,7 @@ class _NextEventTimerState extends State<NextEventTimer> {
       oneSec,
       (Timer timer) {
         setState(() {
-          print("NextEventTimer: " + nextEventTimer.toString());
-          print("NextEventTime: " + nextEventTime.toString());
-          if (nextEventTimer != null) {
             nextEventTimer.updateTimer(nextEventTime);
-          }
         });
       },
     );

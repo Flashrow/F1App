@@ -26,7 +26,6 @@ class _ResultsTabState extends State<ResultsTab> {
   Widget build(BuildContext context) {
     year = context.watch<RacePickerInfoProvider>().year.toString();
     round = context.watch<RacePickerInfoProvider>().round.toString();
-    print("ResultsTab: race info update: " + year + " " + round);
     return ResultsTile(
         label: resultLabel(),
         child: FutureBuilder(

@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:f1app/API/ErgastApi.dart';
 import 'package:f1app/models/Drivers/Driver.dart';
 import 'package:flutter_test/flutter_test.dart';

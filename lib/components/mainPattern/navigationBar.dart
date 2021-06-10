@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class NavigationBar extends StatelessWidget {
-  const NavigationBar({Key? key, this.onTap, this.currentIndex = 1}) : super(key: key);
+  const NavigationBar({Key? key, this.onTap, this.currentIndex = 1})
+      : super(key: key);
 
   final Function? onTap;
   final int currentIndex;

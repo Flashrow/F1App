@@ -1,4 +1,3 @@
-import 'package:f1app/models/Race/Location.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'Time.g.dart';

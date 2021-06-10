@@ -9,6 +9,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Theme.of(context).backgroundColor,
       width: double.infinity,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),

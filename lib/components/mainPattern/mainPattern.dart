@@ -1,3 +1,4 @@
+import 'package:bottom_bar_page_transition/bottom_bar_page_transition.dart';
 import 'package:f1app/components/mainPattern/navigationBar.dart';
 import 'package:f1app/screens/driversScreen/driversScreen.dart';
 import 'package:f1app/screens/homeScreen/homeScreen.dart';
@@ -24,7 +25,6 @@ class _MainPatternState extends State<MainPattern> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
-      print(index);
     });
   }
 
@@ -39,7 +39,15 @@ class _MainPatternState extends State<MainPattern> {
         onTap: _onItemTapped,
         currentIndex: _selectedIndex,
       ),
-      body: _widgetOptions.elementAt(_selectedIndex),
+      body: 
+      BottomBarPageTransition(
+        builder: (_, index) => _widgetOptions.elementAt(index),
+        currentIndex: _selectedIndex,
+        totalLength: 3,
+        transitionType: TransitionType.slide,
+        transitionDuration: Duration(milliseconds: 100),
+        transitionCurve: Curves.easeIn,
+      ),
     );
   }
 }
