@@ -15,7 +15,7 @@ class RaceTable {
   String? round = "";
 
   @JsonKey(name: 'Races')
-  List<Race>? races = [];
+  List<Race>? races;
 
   factory RaceTable.fromJson(Map<String, dynamic> json) => _$RaceTableFromJson(json);
   Map<String, dynamic> toJson() => _$RaceTableToJson(this);

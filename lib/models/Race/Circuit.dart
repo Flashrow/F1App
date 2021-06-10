@@ -15,7 +15,7 @@ class Circuit {
   String? circuitName = "";
 
   @JsonKey(name: 'Location')
-  Location? location = Location();
+  Location? location;
 
   factory Circuit.fromJson(Map<String, dynamic> json) =>
       _$CircuitFromJson(json);

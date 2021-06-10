@@ -1,5 +1,6 @@
 import 'package:f1app/models/Constructors/Constructor.dart';
 import 'package:f1app/models/Drivers/Driver.dart';
+import 'package:f1app/models/Race/Time.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'Result.g.dart';
@@ -28,8 +29,11 @@ class Result {
   Driver? driver;
 
   @JsonKey(name: "Constructor")
-  Constructor? constructor = Constructor();
+  Constructor? constructor;
 
+  @JsonKey(name: "Time")
+  Time? time;
+  
   factory Result.fromJson(Map<String, dynamic> json) =>
       _$ResultFromJson(json);
   Map<String, dynamic> toJson() => _$ResultToJson(this);

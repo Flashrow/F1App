@@ -17,8 +17,8 @@ Race _$RaceFromJson(Map<String, dynamic> json) {
     date: json['date'] as String?,
     raceName: json['raceName'] as String?,
     time: json['time'] as String?,
-  )..results = (json['Results'] as List<dynamic>)
-      .map((e) => Result.fromJson(e as Map<String, dynamic>))
+  )..results = (json['Results'] as List<dynamic>?)
+      ?.map((e) => Result.fromJson(e as Map<String, dynamic>))
       .toList();
 }
 

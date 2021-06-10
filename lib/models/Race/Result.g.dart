@@ -20,7 +20,9 @@ Result _$ResultFromJson(Map<String, dynamic> json) {
     grid: json['grid'] as String?,
     laps: json['laps'] as String?,
     status: json['status'] as String?,
-  );
+  )..time = json['Time'] == null
+      ? null
+      : Time.fromJson(json['Time'] as Map<String, dynamic>);
 }
 
 Map<String, dynamic> _$ResultToJson(Result instance) => <String, dynamic>{
@@ -32,4 +34,5 @@ Map<String, dynamic> _$ResultToJson(Result instance) => <String, dynamic>{
       'status': instance.status,
       'Driver': instance.driver,
       'Constructor': instance.constructor,
+      'Time': instance.time,
     };

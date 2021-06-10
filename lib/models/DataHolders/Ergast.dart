@@ -11,7 +11,7 @@ class Ergast{
   });
 
   @JsonKey(name: "MRData")
-  MRData? mrData = MRData();
+  MRData? mrData;
 
   factory Ergast.fromJson(Map<String, dynamic> json) => _$ErgastFromJson(json);
   Map<String, dynamic> toJson() => _$ErgastToJson(this);

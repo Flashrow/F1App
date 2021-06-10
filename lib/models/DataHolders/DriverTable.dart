@@ -14,7 +14,7 @@ class DriverTable {
   String? season = "";
 
   @JsonKey(name: 'Drivers')
-  List<Driver>? drivers = [];
+  List<Driver>? drivers;
 
   factory DriverTable.fromJson(Map<String, dynamic> json) =>
       _$DriverTableFromJson(json);

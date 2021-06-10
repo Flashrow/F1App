@@ -25,10 +25,10 @@ class Race {
   String? time = "";
 
   @JsonKey(name: 'Circuit')
-  Circuit? circuit = Circuit();
+  Circuit? circuit;
 
   @JsonKey(name: 'Results')
-  List<Result> results = [];
+  List<Result>? results;
 
   factory Race.fromJson(Map<String, dynamic> json) => _$RaceFromJson(json);
   Map<String, dynamic> toJson() => _$RaceToJson(this);

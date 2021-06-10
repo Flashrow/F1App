@@ -1,6 +1,10 @@
+import 'package:f1app/API/ErgastApi.dart';
+import 'package:f1app/models/Race/Result.dart';
+import 'package:f1app/models/RacePickerInfoProvider.dart';
 import 'package:f1app/screens/resultsScreen/resultRow.dart';
 import 'package:f1app/screens/resultsScreen/resultsTile.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ResultsTab extends StatefulWidget {
   ResultsTab({Key? key}) : super(key: key);
@@ -10,26 +14,50 @@ class ResultsTab extends StatefulWidget {
 }
 
 class _ResultsTabState extends State<ResultsTab> {
+  List<Result> results = [];
+  String year = "current";
+  String round = "last";
+
+  _getResults() {
+    return context.read<ErgastApi>().getRaceResults(year, round);
+  }
+
   @override
   Widget build(BuildContext context) {
+    year = context.watch<RacePickerInfoProvider>().year.toString();
+    round = context.watch<RacePickerInfoProvider>().round.toString();
+    print("ResultsTab: race info update: " + year + " " + round);
     return ResultsTile(
         label: resultLabel(),
-        child: SizedBox(
-            height: 500,
-            width: double.infinity,
-            child: ListView(
-              children: [
-                ResultRow(),
-                ResultRow(),
-                ResultRow(),
-                ResultRow(),
-                ResultRow(),
-                ResultRow(),
-                ResultRow(),
-                ResultRow(),
-                ResultRow(),
-              ],
-            )));
+        child: FutureBuilder(
+          future: _getResults(),
+          builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting)
+              return Center(child: CircularProgressIndicator());
+            else if (snapshot.hasData) {
+              results = snapshot.data;
+            } else if (snapshot.hasError)
+              return Text("ERROR: ${snapshot.error}");
+            else
+              return Text('None');
+
+            return SizedBox(
+                height: 500,
+                width: double.infinity,
+                child: ListView.builder(
+                  itemCount: results.length,
+                  itemBuilder: (BuildContext context, int index) => ResultRow(
+                    pos: results[index].position,
+                    name: results[index].driver!.givenName.toString() +
+                        " " +
+                        results[index].driver!.familyName.toString(),
+                    time: results[index].time?.time.toString() ??
+                        results[index].status.toString(),
+                    pts: results[index].points.toString(),
+                  ),
+                ));
+          },
+        ));
   }
 
   Widget resultLabel() {
@@ -50,8 +78,7 @@ class _ResultsTabState extends State<ResultsTab> {
           child: Text("Time",
               style: TextStyle(color: Theme.of(context).backgroundColor)),
         ),
-        Text("Pts",
-              style: TextStyle(color: Theme.of(context).backgroundColor)),
+        Text("Pts", style: TextStyle(color: Theme.of(context).backgroundColor)),
       ],
     );
   }

@@ -15,13 +15,13 @@ class MRData {
   String? total = "";
 
   @JsonKey(name: 'StandingsTable')
-  StandingsTable? standingsTable = StandingsTable();
+  StandingsTable? standingsTable;
 
   @JsonKey(name: "DriverTable")
-  DriverTable driverTable = DriverTable();
+  DriverTable? driverTable;
 
   @JsonKey(name: 'RaceTable')
-  RaceTable? raceTable = RaceTable();
+  RaceTable? raceTable;
 
   factory MRData.fromJson(Map<String, dynamic> json) => _$MRDataFromJson(json);
   Map<String, dynamic> toJson() => _$MRDataToJson(this);

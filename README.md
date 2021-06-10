@@ -1,6 +1,6 @@
 # f1app
 
-A new Flutter project.
+FLutter app to follow Formula 1 current and archive standings using Ergast API.
 
 ## Getting Started
 

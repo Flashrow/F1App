@@ -14,8 +14,9 @@ MRData _$MRDataFromJson(Map<String, dynamic> json) {
         ? null
         : StandingsTable.fromJson(
             json['StandingsTable'] as Map<String, dynamic>)
-    ..driverTable =
-        DriverTable.fromJson(json['DriverTable'] as Map<String, dynamic>)
+    ..driverTable = json['DriverTable'] == null
+        ? null
+        : DriverTable.fromJson(json['DriverTable'] as Map<String, dynamic>)
     ..raceTable = json['RaceTable'] == null
         ? null
         : RaceTable.fromJson(json['RaceTable'] as Map<String, dynamic>);

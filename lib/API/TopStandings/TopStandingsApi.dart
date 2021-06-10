@@ -8,9 +8,9 @@ part 'TopStandingsApi.g.dart';
 abstract class TopStandingsApi{
   factory TopStandingsApi(Dio dio, {String baseUrl}) = _TopStandingsApi;
 
-  @POST('/driverStandings.json')
+  @GET('/driverStandings.json')
   Future<Ergast> getDriversStandings();
 
-  @POST('/constructorStandings.json')
+  @GET('/constructorStandings.json')
   Future<Ergast> getConstructorsStandings();
 }

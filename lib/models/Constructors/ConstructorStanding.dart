@@ -15,7 +15,7 @@ class ConstructorStanding {
   String? wins = "";
 
   @JsonKey(name: "Constructor")
-  Constructor? constructor = Constructor();
+  Constructor? constructor;
 
     factory ConstructorStanding.fromJson(Map<String, dynamic> json) =>
       _$ConstructorStandingFromJson(json);

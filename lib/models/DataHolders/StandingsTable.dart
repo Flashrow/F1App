@@ -13,7 +13,7 @@ class StandingsTable {
   String? season = "";
 
   @JsonKey(name: 'StandingsLists')
-  List<StandingList>? standingsList = [];
+  List<StandingList>? standingsList;
 
   factory StandingsTable.fromJson(Map<String, dynamic> json) =>
       _$StandingsTableFromJson(json);

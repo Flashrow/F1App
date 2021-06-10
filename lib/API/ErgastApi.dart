@@ -5,6 +5,7 @@ import 'package:f1app/models/Constructors/ConstructorStandingData.dart';
 import 'package:f1app/models/Drivers/DriverStanding.dart';
 import 'package:f1app/models/Drivers/DriverStandingData.dart';
 import 'package:f1app/models/Race/Race.dart';
+import 'package:f1app/models/Race/Result.dart';
 import 'package:flutter/material.dart';
 
 import 'Race/RaceApi.dart';
@@ -62,5 +63,20 @@ class ErgastApi with ChangeNotifier {
     return topConstructorStandings;
   }
 
+  Future<List<Result>?> getRaceResults(String year, String round) async {
+    List<Result>? result = [];
+    String raceIndex = year + "/" + round;
+    List<Race>? races = (await race.getRaceResult(raceIndex)).mrData?.raceTable?.races;
+    if(races!.length > 0)
+    result = races.first.results;
+    else
+    result = [];
+    return result;
+  }
+
+  Future<int> getRoundsNumber(String year) async {
+    int rounds = (await race.getRaceSchedule(year)).mrData!.raceTable!.races!.length;
+    return rounds;
+  }
 }
 
