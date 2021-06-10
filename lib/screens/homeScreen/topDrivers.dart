@@ -43,9 +43,16 @@ class _TopDriversTileState extends State<TopDriversTile> {
       child: FutureBuilder(
         future: _getDriverStandings(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-          List<DriverStandingData> driverStanding = List<DriverStandingData>.filled(3, DriverStandingData());
-          if(snapshot.data != null)
-            driverStanding = snapshot.data;          
+          List<DriverStandingData> driverStanding =
+              List<DriverStandingData>.filled(3, DriverStandingData());
+          if (snapshot.connectionState == ConnectionState.waiting)
+            return Center(child: CircularProgressIndicator());
+          else if (snapshot.hasData) {
+            driverStanding = snapshot.data;
+          } else if (snapshot.hasError)
+            return Text("ERROR: ${snapshot.error}");
+          else
+            return Text('None');
 
           return Padding(
             padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),

@@ -44,6 +44,7 @@ class _NextEventTimerState extends State<NextEventTimer> {
         } else {
           return Container();
         }
+        
 
         nextEventTime = DateTime.parse(
               nextRace.date.toString() + " " + nextRace.time.toString());

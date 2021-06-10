@@ -1,5 +1,5 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:f1app/models/DataHolders/StandingList.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'StandingsTable.g.dart';
 

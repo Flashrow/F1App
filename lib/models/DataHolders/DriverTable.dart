@@ -1,6 +1,5 @@
 import 'package:f1app/models/Drivers/Driver.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:f1app/models/DataHolders/StandingList.dart';
 
 part 'DriverTable.g.dart';
 

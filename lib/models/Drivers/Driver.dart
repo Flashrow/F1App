@@ -12,6 +12,8 @@ class Driver {
     this.familyName,
     this.nationality,
     this.dateOfBirth,
+    this.code,
+    this.permanentNumber,
   });
 
   String? driverId = "";
@@ -20,8 +22,9 @@ class Driver {
   String? familyName = "";
   String? dateOfBirth = "";
   String? nationality = "";
+  String? code = "";
+  String? permanentNumber = "";
 
-  factory Driver.fromJson(Map<String, dynamic> json) =>
-      _$DriverFromJson(json);
+  factory Driver.fromJson(Map<String, dynamic> json) => _$DriverFromJson(json);
   Map<String, dynamic> toJson() => _$DriverToJson(this);
 }

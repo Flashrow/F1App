@@ -1,7 +1,9 @@
+import 'package:f1app/API/ErgastApi.dart';
 import 'package:f1app/components/roundedTopCornersTile.dart';
-import 'package:f1app/screens/driverInfoScreen/driverInfoScreen.dart';
+import 'package:f1app/models/Drivers/Driver.dart';
 import 'package:f1app/screens/driversScreen/driversListRow.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DriversScreen extends StatefulWidget {
   const DriversScreen({Key? key}) : super(key: key);
@@ -11,9 +13,10 @@ class DriversScreen extends StatefulWidget {
 }
 
 class _DriversScreenState extends State<DriversScreen> {
-  void openDriverInfoScreen() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => DriverInfoScreen()));
+  List<Driver> driversList = [];
+
+  _getDrivers() {
+    return context.read<ErgastApi>().getDriversList();
   }
 
   @override
@@ -23,23 +26,25 @@ class _DriversScreenState extends State<DriversScreen> {
       child: RoundedTopCornersTile(
         title: "Select driver:",
         child: Expanded(
-          child: ListView(
-            children: [
-              DriversListRow(onTap: openDriverInfoScreen,),
-              DriversListRow(),
-              DriversListRow(),
-              DriversListRow(),
-              DriversListRow(),
-              DriversListRow(),
-              DriversListRow(),
-              DriversListRow(),
-              DriversListRow(),
-              DriversListRow(),
-              DriversListRow(),
-              DriversListRow(),
-              DriversListRow(),
-              DriversListRow(),
-            ],
+          child: FutureBuilder(
+            future: _getDrivers(),
+            builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting)
+                return Center(child: CircularProgressIndicator());
+              else if (snapshot.hasData) {
+                driversList = snapshot.data;
+              } else if (snapshot.hasError)
+                return Text("ERROR: ${snapshot.error}");
+              else
+                return Text('None');
+
+              return ListView.builder(
+                itemCount: driversList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return DriversListRow(driver: driversList[index]);
+                },
+              );
+            },
           ),
         ),
       ),

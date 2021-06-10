@@ -1,5 +1,4 @@
 import 'package:f1app/models/DataHolders/DriverTable.dart';
-import 'package:f1app/models/DataHolders/StandingList.dart';
 import 'package:f1app/models/DataHolders/StandingsTable.dart';
 import 'package:f1app/models/Race/RaceTable.dart';
 import 'package:json_annotation/json_annotation.dart';

@@ -43,9 +43,18 @@ class _TopTeamsTileState extends State<TopTeamsTile> {
       child: FutureBuilder(
         future: _getConstructorStandings(),
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-          List<ConstructorStandingData> constructorStanding = List<ConstructorStandingData>.filled(3, ConstructorStandingData());
-          if(snapshot.data != null)
-            constructorStanding = snapshot.data;  
+          List<ConstructorStandingData> constructorStanding =
+              List<ConstructorStandingData>.filled(
+                  3, ConstructorStandingData());
+
+          if (snapshot.connectionState == ConnectionState.waiting)
+            return Center(child: CircularProgressIndicator());
+          else if (snapshot.hasData) {
+            constructorStanding = snapshot.data;
+          } else if (snapshot.hasError)
+            return Text("ERROR: ${snapshot.error}");
+          else
+            return Text('None');
 
           return Padding(
             padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),

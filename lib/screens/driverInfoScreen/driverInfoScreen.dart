@@ -1,15 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class DriverInfoScreen extends StatefulWidget {
-  DriverInfoScreen({Key? key}) : super(key: key);
+class DriverInfoScreen extends StatelessWidget {
+  DriverInfoScreen(
+      {Key? key,
+      this.driverName,
+      this.driverNumber,
+      this.dateOfBirth,
+      this.nationality,
+      this.code,
+      this.url})
+      : super(key: key);
 
-  @override
-  _DriverInfoScreenState createState() => _DriverInfoScreenState();
-}
+  final String? driverName;
+  final String? driverNumber;
+  final String? dateOfBirth;
+  final String? nationality;
+  final String? code;
+  final String? url;
 
-class _DriverInfoScreenState extends State<DriverInfoScreen> {
   @override
   Widget build(BuildContext context) {
+    void _launchURL() async => {
+          if (url != null && url!.isNotEmpty)
+            await canLaunch(url!)
+                ? await launch(url!)
+                : throw 'Could not launch $url'
+          else
+            {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text("Can't open the link"),
+              )),
+            }
+        };
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
@@ -18,27 +42,60 @@ class _DriverInfoScreenState extends State<DriverInfoScreen> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(
-              width: double.infinity,
-              child: Text(
-                "Fernando Alonso",
-                style: TextStyle(fontSize: 24),
-                textAlign: TextAlign.center,
+            Column(
+              children: [
+                SizedBox(
+                  width: double.infinity,
+                  child: Text(
+                    driverName ?? "",
+                    style: TextStyle(fontSize: 24),
+                  ),
+                ),
+                SizedBox(height: 16),
+                Row(
+                  children: [
+                    Text("Number: "),
+                    Text(driverNumber ?? ""),
+                  ],
+                ),
+                SizedBox(height: 16),
+                Row(
+                  children: [
+                    Text("Code: "),
+                    Text(code ?? ""),
+                  ],
+                ),
+                SizedBox(height: 16),
+                Row(
+                  children: [
+                    Text("Date of birth: "),
+                    Text(dateOfBirth ?? ""),
+                  ],
+                ),
+                SizedBox(height: 16),
+                Row(
+                  children: [
+                    Text("Nationality: "),
+                    Text(nationality ?? ""),
+                  ],
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 36),
+              child: MaterialButton(
+                onPressed: _launchURL,
+                child: Text(
+                  "Wikipedia",
+                  style: TextStyle(color: Theme.of(context).backgroundColor),
+                ),
+                color: Theme.of(context).primaryColor,
+                minWidth: 200,
               ),
             ),
-            SizedBox(height: 16),
-            SizedBox(
-              width: double.infinity,
-              child: Image(
-                image: AssetImage('assets/images/alonso.jpg'),
-                height: 300,
-              ),
-            ),
-            SizedBox(height: 16),
-            Text(
-                "Fernando Alonso is a Spanish racing driver currently racing for Alpine in Formula One. He won the series' World Drivers' Championship in 2005 and 2006 with Renault, having also driven for McLaren, Ferrari and Minardi. With Toyota, Alonso won the 24 Hours of Le Mans twice, in 2018 and 2019, and the FIA World Endurance Championship in 2018–19. In 2019, he won the 24 Hours of Daytona with Wayne Taylor Racing."),
           ],
         ),
       ),
