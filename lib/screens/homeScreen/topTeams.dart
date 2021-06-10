@@ -60,10 +60,10 @@ class _TopTeamsTileState extends State<TopTeamsTile> {
             padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
             child: Table(
               columnWidths: const <int, TableColumnWidth>{
-                0: IntrinsicColumnWidth(),
-                1: FixedColumnWidth(200),
-                2: FixedColumnWidth(100),
-                3: FixedColumnWidth(50),
+                0: FlexColumnWidth(1),
+                1: FlexColumnWidth(3),
+                2: FlexColumnWidth(2),
+                3: FlexColumnWidth(1),
               },
               defaultVerticalAlignment: TableCellVerticalAlignment.middle,
               children: [

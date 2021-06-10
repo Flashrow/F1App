@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ResultRow extends StatelessWidget {
-  const ResultRow({Key? key, this.pos = "0", this.name = "name", this.time = "0:00:00:000", this.pts = "0"}) : super(key: key);
+  const ResultRow(
+      {Key? key,
+      this.pos = "0",
+      this.name = "name",
+      this.time = "0:00:00:000",
+      this.pts = "0"})
+      : super(key: key);
 
   final String? pos;
   final String? name;
@@ -14,19 +20,22 @@ class ResultRow extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 8, 8, 16),
       child: Row(
         children: [
-          SizedBox(
-            width: 38,
+          Expanded(
+            flex: 1,
             child: Text(pos ?? ""),
           ),
-          SizedBox(
-            width: 165,
+          Expanded(
+            flex: 4,
             child: Text(name ?? ""),
           ),
-          SizedBox(
-            width: 115,
+          Expanded(
+            flex: 3,
             child: Text(time ?? ""),
           ),
-          Text(pts ?? ""),
+          Expanded(
+            flex: 1,
+            child: Text(pts ?? ""),
+          ),
         ],
       ),
     );

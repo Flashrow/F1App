@@ -39,22 +39,30 @@ class _ResultsTabState extends State<ResultsTab> {
               return Text("ERROR: ${snapshot.error}");
             else
               return Text('None');
+            
+            if(results.isEmpty)
+            return Padding(
+              padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
+              child: Text("There is no data for this race or race yet not started"),
+            );
 
-            return SizedBox(
-                height: 500,
-                width: double.infinity,
-                child: ListView.builder(
-                  itemCount: results.length,
-                  itemBuilder: (BuildContext context, int index) => ResultRow(
-                    pos: results[index].position,
-                    name: results[index].driver!.givenName.toString() +
-                        " " +
-                        results[index].driver!.familyName.toString(),
-                    time: results[index].time?.time.toString() ??
-                        results[index].status.toString(),
-                    pts: results[index].points.toString(),
-                  ),
-                ));
+            return Expanded(
+              child: SizedBox(
+                  height: double.infinity,
+                  width: double.infinity,
+                  child: ListView.builder(
+                    itemCount: results.length,
+                    itemBuilder: (BuildContext context, int index) => ResultRow(
+                      pos: results[index].position,
+                      name: results[index].driver!.givenName.toString() +
+                          " " +
+                          results[index].driver!.familyName.toString(),
+                      time: results[index].time?.time.toString() ??
+                          results[index].status.toString(),
+                      pts: results[index].points.toString(),
+                    ),
+                  )),
+            );
           },
         ));
   }
@@ -62,22 +70,26 @@ class _ResultsTabState extends State<ResultsTab> {
   Widget resultLabel() {
     return Row(
       children: [
-        SizedBox(
-          width: 38,
+        Expanded(
+          flex: 1,
           child: Text("Pos",
               style: TextStyle(color: Theme.of(context).backgroundColor)),
         ),
-        SizedBox(
-          width: 165,
+        Expanded(
+          flex: 4,
           child: Text("Driver",
               style: TextStyle(color: Theme.of(context).backgroundColor)),
         ),
-        SizedBox(
-          width: 115,
+        Expanded(
+          flex: 3,
           child: Text("Time",
               style: TextStyle(color: Theme.of(context).backgroundColor)),
         ),
-        Text("Pts", style: TextStyle(color: Theme.of(context).backgroundColor)),
+        Expanded(
+          flex: 1,
+          child: Text("Pts",
+              style: TextStyle(color: Theme.of(context).backgroundColor)),
+        ),
       ],
     );
   }

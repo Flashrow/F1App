@@ -26,10 +26,9 @@ class _ResultsScreenState extends State<ResultsScreen> {
               padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
               child: RacePicker(),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
-              child: ResultsTab(),
-            ),
+            SizedBox(height: 16),
+            Expanded(child: ResultsTab()),
+            SizedBox(height: 16),
           ],
         ),
       ),
